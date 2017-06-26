@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Staempfli
+ * @package   Staempfli_Slack
+ * @copyright Copyright © Stämpfli AG. All rights reserved.
+ * @author    marcel.hauri@staempfli.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <chatconnector>
+            <slack>
+                <url/>
+                <channel>general</channel>
+                <username>Magento 2</username>
+                <icon>rocket</icon>
+            </slack>
+        </chatconnector>
+    </default>
+</config>

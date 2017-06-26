@@ -1,0 +1,22 @@
+{
+  "name": "staempfli/magento2-module-slack",
+  "description": "Magento 2 Slack",
+  "require": {
+    "php": "~7.0.0",
+    "staempfli/magento2-module-chat-connector": "~1.0",
+    "league/html-to-markdown": "~4.4"
+  },
+  "type": "magento2-module",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Staempfli\\Slack\\": ""
+    }
+  }
+}

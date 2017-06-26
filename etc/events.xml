@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Staempfli
+ * @package   Staempfli_Slack
+ * @copyright Copyright © Stämpfli AG. All rights reserved.
+ * @author    marcel.hauri@staempfli.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="chatconnector_notification">
+        <observer name="notify_slack" instance="Staempfli\Slack\Observer\Notify"/>
+    </event>
+</config>
