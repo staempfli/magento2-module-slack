@@ -60,6 +60,8 @@ class Notify implements ObserverInterface
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         $data = [];
+        $data['text'] = strip_tags($observer->getMessage());
+
         if ($this->config->getMessageFormat() === 'mrkdwn') {
             $this->converter->getConfig()->setOption('bold_style', '*');
             $this->converter->getConfig()->setOption('italic_style', '_');
@@ -68,9 +70,8 @@ class Notify implements ObserverInterface
             $data['text'] = $this->converter->convert(nl2br($observer->getMessage()));
             $data['mrkdwn'] = true;
             $data['mrkdwn_in'] = 'text';
-        } else {
-            $data['text'] = strip_tags($observer->getMessage());
         }
+
         $data['channel'] = $this->config->getChannel();
         $data['username'] = $this->config->getUsername();
         $data['icon_emoji'] = $this->config->getIcon();
