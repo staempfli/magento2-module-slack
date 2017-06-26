@@ -2,6 +2,8 @@
 
 Magento 2 Module to send Notifications to a Slack Channel via Webhook.
 
+[![Codacy](https://api.codacy.com/project/badge/Grade/f7797be796714384a2dc1eb1b7c0e780)](https://www.codacy.com/app/Staempfli/magento2-module-slack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=staempfli/magento2-module-slack&amp;utm_campaign=Badge_Grade)
+
 Requirements
 ------------
 - PHP >= 7.0.*
