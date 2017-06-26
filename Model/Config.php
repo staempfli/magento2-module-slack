@@ -14,9 +14,9 @@ class Config
 {
     const MESSAGE_FORMAT = 'mrkdwn';
     const XML_PATH_SLACK_URL = 'chatconnector/slack/url';
-    const XML_PATH_SlACK_CHANNEL = 'chatconnector/slack/channel';
-    const XML_PATH_SlACK_USERNAME = 'chatconnector/slack/username';
-    const XML_PATH_SlACK_ICON = 'chatconnector/slack/icon';
+    const XML_PATH_SLACK_CHANNEL = 'chatconnector/slack/channel';
+    const XML_PATH_SLACK_USERNAME = 'chatconnector/slack/username';
+    const XML_PATH_SLACK_ICON = 'chatconnector/slack/icon';
 
     /**
      * @var ScopeConfigInterface
@@ -48,7 +48,7 @@ class Config
      */
     public function getChannel()
     {
-        $channel = $this->scopeConfig->getValue(self::XML_PATH_SlACK_CHANNEL, ScopeInterface::SCOPE_STORE);
+        $channel = $this->scopeConfig->getValue(self::XML_PATH_SLACK_CHANNEL, ScopeInterface::SCOPE_STORE);
         return ltrim($channel, '#');
     }
 
@@ -57,7 +57,7 @@ class Config
      */
     public function getUsername()
     {
-        return $this->scopeConfig->getValue(self::XML_PATH_SlACK_USERNAME, ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(self::XML_PATH_SLACK_USERNAME, ScopeInterface::SCOPE_STORE);
     }
 
     /**
@@ -65,7 +65,7 @@ class Config
      */
     public function getIcon()
     {
-        $icon = trim($this->scopeConfig->getValue(self::XML_PATH_SlACK_ICON, ScopeInterface::SCOPE_STORE), ':');
+        $icon = trim($this->scopeConfig->getValue(self::XML_PATH_SLACK_ICON, ScopeInterface::SCOPE_STORE), ':');
         return sprintf(':%s:', $icon);
     }
 
