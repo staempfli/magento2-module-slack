@@ -20,7 +20,7 @@ Compatibility
 ## Installation
 
 ```
-$ composer require "staempfli/magento2-module-slack":"~1.0"
+$ composer require "staempfli/magento2-module-slack":"~1.1"
 ```
 
 Support

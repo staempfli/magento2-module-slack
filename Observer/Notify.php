@@ -17,6 +17,7 @@ use Staempfli\Slack\Model\Config;
 
 class Notify implements ObserverInterface
 {
+    const MESSAGE_LIMIT = 10000;
     /**
      * @var MessageInterface
      */
@@ -61,13 +62,14 @@ class Notify implements ObserverInterface
     {
         $data = [];
         $data['text'] = strip_tags($observer->getMessage());
+        $message = $this->converter->convert(nl2br($observer->getMessage()));
 
         if ($this->config->getMessageFormat() === 'mrkdwn') {
             $this->converter->getConfig()->setOption('bold_style', '*');
             $this->converter->getConfig()->setOption('italic_style', '_');
             $this->converter->getConfig()->setOption('strike_style', '~');
             $this->converter->getConfig()->setOption('code_style', "`");
-            $data['text'] = $this->converter->convert(nl2br($observer->getMessage()));
+            $data['text'] = substr($message, 0, self::MESSAGE_LIMIT);
             $data['mrkdwn'] = true;
             $data['mrkdwn_in'] = 'text';
         }
@@ -77,6 +79,7 @@ class Notify implements ObserverInterface
         $data['icon_emoji'] = $this->config->getIcon();
         $message = $this->message
             ->setUrl($this->config->getUrl())
+            ->setEvent($observer->getEvent())
             ->setMessageData($data);
         $this->messageManagement->send($message);
     }
