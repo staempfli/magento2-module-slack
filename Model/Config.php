@@ -49,7 +49,7 @@ class Config
     public function getChannel()
     {
         $channel = $this->scopeConfig->getValue(self::XML_PATH_SLACK_CHANNEL, ScopeInterface::SCOPE_STORE);
-        return ltrim($channel, '#');
+        return sprintf('#%s', ltrim($channel, '#'));
     }
 
     /**
