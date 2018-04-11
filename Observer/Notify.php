@@ -45,13 +45,12 @@ class Notify implements ObserverInterface
     public function __construct(
         MessageInterface $message,
         MessageManagementInterface $messageManagement,
-        Config $config,
-        HtmlConverter $converter
+        Config $config
     ) {
         $this->message = $message;
         $this->messageManagement = $messageManagement;
         $this->config = $config;
-        $this->converter = $converter;
+        $this->converter = new HtmlConverter();
     }
 
     /**
@@ -62,14 +61,13 @@ class Notify implements ObserverInterface
     {
         $data = [];
         $data['text'] = strip_tags($observer->getMessage());
-        $message = $this->converter->convert(nl2br($observer->getMessage()));
 
         if ($this->config->getMessageFormat() === 'mrkdwn') {
             $this->converter->getConfig()->setOption('bold_style', '*');
             $this->converter->getConfig()->setOption('italic_style', '_');
             $this->converter->getConfig()->setOption('strike_style', '~');
             $this->converter->getConfig()->setOption('code_style', "`");
-            $data['text'] = substr($message, 0, self::MESSAGE_LIMIT);
+            $data['text'] = substr($this->converter->convert(nl2br($observer->getMessage())), 0, self::MESSAGE_LIMIT);
             $data['mrkdwn'] = true;
             $data['mrkdwn_in'] = 'text';
         }
